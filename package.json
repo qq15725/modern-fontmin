@@ -1,7 +1,7 @@
 {
   "name": "modern-fontmin",
   "type": "module",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "packageManager": "pnpm@7.26.2",
   "description": "Fastest cropping font files in the browser",
   "author": "wxm",
