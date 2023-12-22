@@ -54,6 +54,7 @@
   "devDependencies": {
     "@qq15725/eslint-config": "^1.1.0",
     "@types/node": "^20.10.5",
+    "@types/pako": "^2.0.3",
     "bumpp": "^9.2.1",
     "conventional-changelog-cli": "^4.1.0",
     "eslint": "^8.56.0",
