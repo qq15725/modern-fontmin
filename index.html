@@ -1,16 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
   <meta charset="utf-8">
   <title>Playground</title>
+  <style>
+    * {
+      font-size: 40px;
+    }
+  </style>
 </head>
 <body>
-  <div>Playground</div>
+<span style="font-family: CustomFont;">TEST</span>
 
-  <script type="module">
-    import { one } from './src'
+<script type="module" async>
+  import { arrayBufferToDataUrl, minify } from './src'
 
-    console.log(one)
-  </script>
+  const rep = await fetch('/test/assets/test.woff')
+  const font = await rep.arrayBuffer()
+  // eslint-disable-next-line no-console
+  console.time('minify')
+  // const min = minify(font, 'i')
+  const min = minify(font, 'TEST')
+  // eslint-disable-next-line no-console
+  console.timeEnd('minify')
+  // eslint-disable-next-line no-console
+  console.log('raw size', font.byteLength / 1024, 'kb')
+  // eslint-disable-next-line no-console
+  console.log('min size', min.byteLength / 1024, 'kb')
+  const dataUrl = arrayBufferToDataUrl(min, 'font/woff')
+  const style = document.createElement('style')
+  style.appendChild(
+    document.createTextNode(`
+@font-face {
+  font-family: "CustomFont";
+  src: url(${ dataUrl }) format("woff");
+}
+    `),
+  )
+  document.head.append(style)
+</script>
 </body>
 </html>
