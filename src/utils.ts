@@ -1,3 +1,5 @@
+import { encode } from './base64-arraybuffer';
+
 // WOFF
 export const WOFF_SIGNATURE = 'wOFF'
 export const WOFF_HEADER_SIZE = 44
@@ -28,11 +30,6 @@ export function checkSum(view: DataView) {
 }
 
 export function arrayBufferToDataUrl(buffer: ArrayBuffer, type: string) {
-  const bytes = new Uint8Array(buffer)
-  const len = bytes.byteLength
-  let binary = ''
-  for (let i = 0; i < len; i++) {
-    binary += String.fromCharCode(bytes[i])
-  }
-  return `data:${ type };base64,${ window.btoa(binary) }`
+  const base64 = encode(buffer)
+  return `data:${ type };base64,${ base64 }`
 }
