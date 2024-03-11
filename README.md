@@ -1,3 +1,8 @@
+> [!IMPORTANT]
+> modern-fontmin is merged back to modern-font! This repository is now archived. Please continue at [qq15725/modern-font](https://github.com/qq15725/modern-font).
+
+---
+
 <h1 align="center">modern-fontmin</h1>
 
 <p align="center">
